@@ -19,7 +19,7 @@
             $connPdo = 'host='.DBHOST.' port='.DBPORT.' dbname='.DBNAME.' user='.DBUSER.' password='.DBPASS;
             $conexao = pg_connect($connPdo) or die('Erro de conexão: ' . pg_last_error());
             
-            $query = 'SELECT * FROM users, orders address WHERE orders.id_user = users.id AND orders.id_address = address.id';
+            $query = 'SELECT * FROM users, orders, address WHERE orders.id_user = users.id AND orders.id_address = address.id';
             $result = pg_query($conexao, $query) or die('Erro de operação: ' . pg_last_error());;
             
             return pg_fetch_all($result);
