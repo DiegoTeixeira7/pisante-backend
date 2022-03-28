@@ -62,7 +62,7 @@
             $connPdo = 'host='.DBHOST.' port='.DBPORT.' dbname='.DBNAME.' user='.DBUSER.' password='.DBPASS;
             $conexao = pg_connect($connPdo) or die('Erro de conexão: ' . pg_last_error());
             
-            $query = 'UPDATE '.self::$table.' SET first_name = '."'". $data['first_name'] ."'".', last_name = '."'".$data['last_name']."'".', phone = '."'".$data['phone']."'".', cel = '."'". $data['cel']. "'".', email = '."'". $data['email']. "'".', password = '."'". $data['password']."'".', gender = '."'". $data['gender']."'".', cpf = '. $data['cpf']."'"."'".', id_address = '. $data['id_address']. ' WHERE id = '.$data['id'];
+            $query = 'UPDATE '.self::$table.' SET first_name = '."'". $data['first_name'] ."'".', last_name = '."'".$data['last_name']."'".', phone = '."'".$data['phone']."'".', cel = '."'". $data['cel']. "'".', email = '."'". $data['email']. "'".', password = '."'". $data['password']."'".', gender = '."'". $data['gender']."'".', cpf = '."'". $data['cpf']."'".', id_address = '. $data['id_address']. ' WHERE id = '.$data['id'];
             $result = pg_query($conexao, $query) or die('Erro de operação: ' . pg_last_error());;
 
             $query = 'UPDATE address SET street = '."'". $data['street'] ."'".', city = '."'".$data['city']."'".', state = '."'". $data['state'] ."'".', cep = '."'".$data['cep']."'".', country = '."'".$data['country']."'".', neighborhood = '."'".$data['neighborhood']."'".', number = '.$data['number']. ' WHERE id = '.$data['id_address'];
