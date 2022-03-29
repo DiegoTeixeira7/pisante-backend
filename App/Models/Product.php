@@ -19,7 +19,7 @@
             $connPdo = 'host='.DBHOST.' port='.DBPORT.' dbname='.DBNAME.' user='.DBUSER.' password='.DBPASS;
             $conexao = pg_connect($connPdo) or die('Erro de conexão: ' . pg_last_error());
             
-            $query = 'SELECT * FROM model, product WHERE product.id = model.id';
+            $query = 'SELECT * FROM model, product WHERE product.id_model = model.id';
             $result = pg_query($conexao, $query) or die('Erro de operação: ' . pg_last_error());;
             
             return pg_fetch_all($result);
