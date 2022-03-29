@@ -30,7 +30,7 @@
             $connPdo = 'host='.DBHOST.' port='.DBPORT.' dbname='.DBNAME.' user='.DBUSER.' password='.DBPASS;
             $conexao = pg_connect($connPdo) or die('Erro de conexão: ' . pg_last_error());
            
-            $values = "'" . $data['brand'] . "','" . $data['material'] . "','" . $data['intended_audience'] . "','" . $data['closure'] . "','" . $data['is_shock_absorbers'] . "','" . $data['is_anti_odour_insole']."'";
+            $values = "'" . $data['brand'] . "','" . $data['material'] . "','" . $data['intended_audience'] . "','" . $data['closure'] . "','". $data['is_shock_absorbers']. "','". $data['is_anti_odour_insole']."'";
             $query = 'INSERT INTO model (brand, material, intended_audience, closure, is_shock_absorbers, is_anti_odour_insole, inventory) VALUES'. '('.$values.',null) RETURNING id';
 
             $result = pg_query($conexao, $query) or die('Erro de operação: ' . pg_last_error());;
@@ -73,7 +73,7 @@
 
             $id_model = $result[0]['id_model'];
 
-            $query = 'UPDATE model SET brand = '."'". $data['brand'] ."'".', material = '."'".$data['material']."'".', intended_audience = '."'". $data['intended_audience'] ."'".', closure = '."'".$data['closure'].', is_shock_absorbers = '.$data['is_shock_absorbers'].', is_anti_odour_insole = '.$data['is_anti_odour_insole']."'". ' WHERE id = '.$id_model;
+            $query = 'UPDATE model SET brand = '."'". $data['brand'] ."'".', material = '."'".$data['material']."'".', intended_audience = '."'". $data['intended_audience'] ."'".', closure = '."'".$data['closure']."'".', is_shock_absorbers = '."'".$data['is_shock_absorbers']."'".', is_anti_odour_insole = '."'".$data['is_anti_odour_insole']."'". ' WHERE id = '.$id_model;
             
             $result = pg_query($conexao, $query) or die('Erro de operação: ' . pg_last_error());;
             
